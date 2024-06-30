@@ -1,0 +1,134 @@
+/* div mãe */
+.productDisplay{
+    display: flex;
+    margin: 0px 170px;
+}
+
+/* estilização lado esquerdo da pagina */
+.productDisplayLeft{
+    display: flex;
+    gap: 17px;
+}
+
+/* estilização da div das img menores */
+.productImgList{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* estilização das imagens menores */
+.productImgList img{
+    height: 163px;
+
+}
+
+/* estilizaçãp da imagem principal */
+.productMainImg{
+    width: 586px;
+    height: 700px;
+}
+
+
+/* estilização do lado direito da pagina */
+.productDisplayRight{
+    margin: 0px 70px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* estilização do h1 */
+.productDisplayRight h1{
+    color: #3d3d3d;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+/* estelização das estrelas */
+.productDisplayRightStar{
+    display: flex;
+    align-items: center;
+    margin-top: 13px;
+    gap: 5px;
+    color: #1c1c1c;
+    font-size: 16px;
+}
+
+/* estilização da div dos preços */
+.productRightPrices{
+    display: flex;
+    flex-direction: column;
+    margin: 40px 0px;
+    gap: 30px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* estilização do preço antigo */
+.productRightPriceOld{
+    color: #818181;
+    text-decoration: line-through;
+}
+
+/* estilização do novo preco */
+.productRightNewPrice{
+    color: #ff4141;
+}
+
+/* estilização da descrição */
+.productRightDescription {
+    color: #454545;
+}
+
+/* estilização do h1 da seleção de tamanhos */
+.productRightSize h1{
+    margin-top: 55px;
+    color: #656565;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* estilização da seleção de tamanhos */
+.productRightSizes{
+    display: flex;
+    margin: 30px 0px;
+    gap: 20px;
+}
+
+.productRightSizes div{
+    color: #3c3c3c;
+}
+
+/* estilização das div dos tamanhos */
+.productRightSizes div{
+    padding: 18px 24px;
+    background-color: #fbfbfb;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.productDisplayRight button{
+    padding: 20px 40px;
+    width: 250px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: #ff4141;
+    margin-bottom: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 35px;
+}
+
+.productRightCategory{
+    font-weight: 500;
+    color: #1c1c1c;
+    margin-top: 0px;
+    font-size: 1.3rem;
+}
+
+.productRightCategory span{
+    font-weight: 600;
+}
