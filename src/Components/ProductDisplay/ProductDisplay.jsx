@@ -2,10 +2,13 @@ import style from './Product.module.css';
 import PropTypes from 'prop-types';
 import star_icon from '../../assets/star_icon.png';
 import star_dull_icon from '../../assets/star_dull_icon.png';
+import { useContext } from 'react';
+import { ShopContext } from '../../Context/ShopContext';
 
 export const ProductDisplay = (props) => {
 
     const {product} = props;
+    const {addToCart} = useContext(ShopContext);
 
   return (
     <div className={style.productDisplay}>
@@ -51,7 +54,7 @@ export const ProductDisplay = (props) => {
                         <div>GG</div>
                     </div>
                 </div>
-                <button>Adicionar ao Carrinho</button>
+                <button onClick={() => {addToCart(product.id)}}>Adicionar ao Carrinho</button>
                 <p className={style.productRightCategory}> 
                     <span>Categoria : </span> 
                     Mulheres, Top curto, Camiseta 
@@ -72,5 +75,6 @@ ProductDisplay.propTypes = {
         name: PropTypes.string.isRequired,
         old_price: PropTypes.number.isRequired,
         new_price: PropTypes.number.isRequired,
+        id: PropTypes.number.isRequired,
     }).isRequired,
 };

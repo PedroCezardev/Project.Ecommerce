@@ -10,7 +10,7 @@ export const Hero = () => {
             <h2>APENAS RECÉM-CHEGADOS</h2>
             <div>
                 <div className={style.heroHandIcon}>
-                    <p>Nova</p>
+                    <p>Novas</p>
                     <img src={hand_icon} alt="" />
                 </div>
                 <p>Coleções</p>

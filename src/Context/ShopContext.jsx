@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
 import all_product from '../assets/all_product';
 
 // estamos criando um novo contexto com o valor inicial null
@@ -7,12 +7,52 @@ export const ShopContext = createContext(null);
 // shopContext recebe uma prop como argumento, propriedades 
 // passadas para este componente
 
+    const getDefaultCart = () => {
+        let cart = {};
+        for (let i = 0; i < all_product.length; i++) {
+            cart[i] = 0;
+        }
+        return cart;
+    }
+
 // este é um componente provedor do shopContext
 const ShopContextProvider = (props) => {
     
+    const [cartItems,setCartItms] = useState(getDefaultCart());
+    
+    const addToCart = (itemId) => {
+        setCartItms((prev) => ({...prev,[itemId]:prev[itemId]+1}))
+        console.log(cartItems);
+    }
+    
+    const removeFromCart = (itemId) => {
+        setCartItms((prev) => ({...prev,[itemId]:prev[itemId]-1}))
+    }
+
+    const getTotalCartAmount = () => {
+        let totalAmount = 0;
+        for(const item in cartItems) {
+            if(cartItems[item] > 0){
+                let itemInfo = all_product.find((product) => product.id === Number(item))
+                totalAmount += itemInfo.new_price * cartItems[item];
+            }
+        }
+        return totalAmount;
+    }
+
+    const getTotalCartItems =() => {
+        let totalItem = 0;
+        for(const item in cartItems){
+            if(cartItems[item] > 0) {
+                totalItem += cartItems[item];
+            }
+        }
+        return totalItem;
+    }
+    
     // contextValue é um objeto que contém all product
     // este objeto sera compartilhado com todos comp. que consumirem o shopContext
-    const contextValue = {all_product};
+    const contextValue = {getTotalCartItems, getTotalCartAmount, all_product, cartItems, addToCart, removeFromCart};
 
     return(
         // o comp. retorna um shopcontextprovider com o valor contextvalue
