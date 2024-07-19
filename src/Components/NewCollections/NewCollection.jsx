@@ -7,7 +7,7 @@ export const NewCollection = () => {
     <div className={style.newCollections}>
         <h1>Novas coleções</h1>
         <hr />
-        <div className={style.colections}>
+        <div className={style.collections}>
             {new_collection.map((item, i) => {
                 return <Item 
                     key={i} id={item.id} 
