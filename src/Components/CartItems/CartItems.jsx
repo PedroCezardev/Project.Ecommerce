@@ -26,7 +26,11 @@ export const CartItems = () => {
                 return <div key={e.id}>
                     <div className={style.cartItemsFormatMain}>
                         <Link to={`/product/${e.id}`}> 
-                            <img onClick={window.scrollTo(0,0)} src={e.image}  alt="" className={style.cartIconProductIcon} />
+                            <img onClick={window.scrollTo(0,0)} 
+                                src={e.image}  
+                                alt="" 
+                                className={style.cartIconProductIcon} 
+                            />
                         </Link>
                         <Link to={`/product/${e.id}`}>
                             <p>{e.name}</p>
@@ -34,7 +38,11 @@ export const CartItems = () => {
                         <p>${e.new_price}</p>
                         <button className={style.cartItemsQuantity}>{cartItems[e.id]}</button>
                         <p>${e.new_price*cartItems[e.id]}</p>
-                        <img className={style.cartItemsRemoveIcon} src={remove_icon} onClick={() => {removeFromCart(e.id)}} alt="" />
+                        <img className={style.cartItemsRemoveIcon} 
+                            src={remove_icon} 
+                            onClick={() => {removeFromCart(e.id)}} 
+                            alt="" 
+                        />
                     </div>
                     <hr />
             </div>
