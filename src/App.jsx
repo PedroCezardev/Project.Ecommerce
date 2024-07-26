@@ -5,7 +5,7 @@ import { ShopCategory } from './Pages/ShopCategory/ShopCategory';
 import { Cart } from './Pages/Cart/Cart';
 import { Product } from './Pages/Product/Product';
 import Home from './Pages/Home';
-import { LoginSignup } from './Pages/LoginSignup/LoginSignup';
+import { LoginSignup } from './Pages/LoginSignup/LoginSignup'
 import { Footer } from './Components/Footer/Footer';
 import men_banner from './assets/banner_mens.png';
 import women_banner from './assets/banner_women.png';

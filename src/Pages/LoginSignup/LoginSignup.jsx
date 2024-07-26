@@ -1,17 +1,76 @@
+import { useState } from 'react'
 import style from './Login.module.css';
 
 export const LoginSignup = () => {
+  
+  const [state, setState] = useState("Entrar");
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+    email: ""
+  })
+
+  const changeHandler = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value})
+  }
+
+  const login = async () => {
+    console.log("Função Login Executada", formData);
+  }
+
+  const signup = async () => {
+    console.log("Função Signup Executada", formData);
+
+    let responseData;
+    await fetch('http://localhost:4000/signup', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/form-data',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    }).then((response) => response.json()).then((data) => responseData = data)
+
+    if(responseData.success){
+      localStorage.setItem('auth-token', responseData.token);
+      window.location.replace("/");
+    }
+  }
+
   return (
     <div className={style.loginSignup}>
       <div className={style.loginContainer}>
-        <h1>Cadastre-se</h1>
+        <h1>{state}</h1>
         <div className={style.loginFields}>
-          <input type="text" placeholder='Seu nome' />
-          <input type="email" placeholder='Endereço de E-mail' />
-          <input type="password" placeholder='Senha' />
+          { state === "Cadastre-se" ? 
+            <input 
+              name='username' 
+              value={formData.username} 
+              onChange={changeHandler} 
+              type="text" 
+              placeholder='Seu nome' 
+            /> 
+          : <></> }
+          <input 
+            name='email' 
+            value={formData.email} 
+            onChange={changeHandler}
+            type="email" 
+            placeholder='Endereço de E-mail' 
+          />
+          <input 
+            name='password' 
+            value={formData.password} 
+            onChange={changeHandler}
+            type="password" 
+            placeholder='Senha' 
+          />
         </div>
-        <button>Continuar</button>
-        <p className={style.loginSignupLogin}>Você jpa possui uma conta? <span>Entre aqui</span></p>
+        <button onClick={() => {state === "Entrar" ? login():signup()}} >Continuar</button>
+        {state === "Cadastre-se"
+        ? <p className={style.loginSignupLogin}>Você já possui uma conta? <span onClick={() => {setState("Entrar")}}>Entre aqui</span></p>
+        : <p className={style.loginSignupLogin}>Crie a sua conta aqui! <span onClick={() => {setState("Cadastre-se")}}>Click aqui</span></p>
+        }
         <div className={style.loginAgree}>
           <input type="checkbox" name='' id='' />
           <p>Ao continuar, concordo com os termos de uso e política de privacidade</p>
