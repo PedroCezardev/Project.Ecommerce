@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import { createContext, useState } from 'react'
-import all_product from '../assets/all_product';
+import { createContext, useEffect, useState } from 'react';
 
 // estamos criando um novo contexto com o valor inicial null
 export const ShopContext = createContext(null);
@@ -9,7 +8,7 @@ export const ShopContext = createContext(null);
 
     const getDefaultCart = () => {
         let cart = {};
-        for (let i = 0; i < all_product.length; i++) {
+        for (let i = 0; i < 300+1; i++) {
             cart[i] = 0;
         }
         return cart;
@@ -17,8 +16,15 @@ export const ShopContext = createContext(null);
 
 // este é um componente provedor do shopContext
 const ShopContextProvider = (props) => {
-    
+
+    const [all_product, setAll_Product] = useState([]);
     const [cartItems,setCartItms] = useState(getDefaultCart());
+
+    useEffect(() => {
+        fetch('http://localhost:4000/allproducts')
+        .then((response) => response.json())
+        .then((data) => setAll_Product(data))
+    },[])
     
     const addToCart = (itemId) => {
         setCartItms((prev) => ({...prev,[itemId]:prev[itemId]+1}))
