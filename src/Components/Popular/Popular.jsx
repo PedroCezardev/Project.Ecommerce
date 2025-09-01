@@ -7,7 +7,8 @@ export const Popular = () => {
   const [popularProducts, setPopularProducts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:4000/popularInWomen')
+    const apiUrl = import.meta.env.VITE_APP_BACKEND_URL;
+    fetch(`${apiUrl}/popularInWomen`)
     .then((response) => response.json())
     .then((data) => setPopularProducts(data));
   }, [])

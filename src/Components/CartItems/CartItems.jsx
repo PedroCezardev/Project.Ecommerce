@@ -34,7 +34,8 @@ export const CartItems = () => {
                 return;
             }
 
-            const response = await fetch('http://localhost:4000/checkout', {
+            const apiUrl = import.meta.env.VITE_APP_BACKEND_URL;
+            const response = await fetch(`${apiUrl}/checkout`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

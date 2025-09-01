@@ -19,7 +19,8 @@ export const LoginSignup = () => {
     console.log("Função Signup Executada", formData);
 
     let responseData;
-    await fetch('http://localhost:4000/login', {
+    const apiUrl = import.meta.env.VITE_APP_BACKEND_URL;
+    await fetch(`${apiUrl}/login`, {
       method: 'POST',
       headers: {
         Accept: 'application/form-data',
